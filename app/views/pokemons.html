@@ -1,0 +1,32 @@
+<div class="jumbotron">
+  <h1>Pokedex</h1>
+  <p class="lead">
+    <img src="images/Professeur_Chen.png" alt="I'm Pr. Oak" width="15%"><br>
+    Hi ! I'm professor Oak. Can I help you ?
+  </p>
+</div>
+
+<!--
+<input ng-model='search.name' placeholder='filter...'/>
+<div ng-repeat="pokemon in pokemons | filter:search:name | limitTo: 10">
+    <a href="{{ pokemon.url }}">{{ pokemon.name }}</a>
+</div>
+
+-->
+
+<!--
+<ui-select multiple limit="1" tagging ng-model="search.name">
+    <ui-select-match placeholder="Select up to 3 items">{{$item.name}}</ui-select-match>
+    <ui-select-choices repeat="pokemon in pokemons | filter:$select.search | limitTo: 10">
+        {{pokemon.name}}
+    </ui-select-choices>
+</ui-select>
+-->
+
+
+<ui-select ng-model="search.name" theme="bootstrap">
+    <ui-select-match placeholder="Select or search a pokemon in the Pokedex...">{{search.name.name}}</ui-select-match>
+    <ui-select-choices repeat="pokemon in pokemons | filter: $select.search | limitTo: 25">
+        <div ng-bind-html="pokemon.name | highlight: $select.search"></div>
+    </ui-select-choices>
+</ui-select>
